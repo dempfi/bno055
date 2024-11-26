@@ -1,43 +1,43 @@
 [package]
-name = "bno055"
-description = "Bosch Sensortec BNO055 9-axis IMU driver"
-version = "0.4.0" # Remember to update lib.rs
-authors = ["Eugene P. <eupn@protonmail.com>", "Henrik B. <hargonix@gmail.com>"]
-repository = "https://github.com/eupn/bno055"
-edition = "2018"
-categories = [
-    "embedded",
-    "hardware-support",
-    "no-std",
-]
-keywords = [
-    "embedded-hal-driver",
-    "bno055",
-]
-license-file = "LICENSE"
-readme = "README.md"
+    authors = [
+        "Eugene P. <eupn@protonmail.com>",
+        "Henrik B. <hargonix@gmail.com>",
+    ]
+    categories = ["embedded", "hardware-support", "no-std"]
+    description = "Bosch Sensortec BNO055 9-axis IMU driver"
+    edition = "2018"
+    keywords = ["embedded-hal-driver", "bno055"]
+    license-file = "LICENSE"
+    name = "bno055"
+    readme = "README.md"
+    repository = "https://github.com/eupn/bno055"
+    version = "0.4.0-interrupts"
 
-# linux-embedded-hal requires 1.65 because of nix
-rust-version = "1.65"
+    # linux-embedded-hal requires 1.65 because of nix
+    rust-version = "1.65"
 
 [dependencies]
-byteorder = { version = "1", default-features = false }
-serde = { version = "1.0", default-features = false, features = ["derive"], optional = true }
-mint = "^0.5.4"
-bitflags = "2"
-num-traits = { version = "0.2.15", default-features = false, features = ["libm"] }
-num-derive = "0.4.1"
+    bitflags = "2"
+    byteorder = { version = "1", default-features = false }
+    mint = "^0.5.4"
+    num-derive = "0.4.1"
+    num-traits = { version = "0.2.15", default-features = false, features = [
+        "libm",
+    ] }
+    serde = { version = "1.0", default-features = false, features = [
+        "derive",
+    ], optional = true }
 
-defmt = { version = "0.3", optional = true }
+    defmt = { version = "0.3", optional = true }
 
-embedded-hal = { version = "1.0" }
+    embedded-hal = { version = "1.0" }
 
 [features]
-default = []
-std = []
+    default = []
+    std     = []
 
-defmt-03 = ["dep:defmt", "embedded-hal/defmt-03"]
-serde = ["dep:serde", "mint/serde"]
+    defmt-03 = ["dep:defmt", "embedded-hal/defmt-03"]
+    serde    = ["dep:serde", "mint/serde"]
 
 [dev-dependencies]
-linux-embedded-hal = "0.4"
+    linux-embedded-hal = "0.4"
